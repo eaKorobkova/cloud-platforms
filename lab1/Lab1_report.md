@@ -41,13 +41,18 @@ Date of finished: 24.11.2025
 5. Повторила пункт с копированием данных, выводы:
 
 Storage Admin позволяет:
+
 Копировать файлы ИЗ Cloud Storage
+
 Загружать файлы В Cloud Storage
+
 Удалять файлы из Cloud Storage
+
 Просматривать Compute Engine ресурсы
 
 Compute Viewer позволяет:
 Только просматривать Compute Engine ресурсы (список VM, диски и т.д.)
+
 Не может работать с Cloud Storage
 
 6. Удалите за собой все созданные сервисы.
