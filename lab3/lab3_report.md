@@ -16,7 +16,7 @@ Date of create: 01.12.2025
 
 Date of finished: 01.12.2025
 
-1. Выбраkf существующий проект cloud-platforms-as-the-basis, в котором у меня были соответствующие разрешения.
+1. Выбрала существующий проект cloud-platforms-as-the-basis, в котором у меня были соответствующие разрешения.
 
 2. Создала Cloud Storage bucket, параметры:
 
