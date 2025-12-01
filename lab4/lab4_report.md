@@ -16,14 +16,8 @@ Date of create: 30.11.2025
 
 Date of finished: 01.12.2025
 
-Приложение - чат-бот с RAG (Retrieval-Augmented Generation), отвечающий пользователям на основе базы знаний компании.
 
-**Компоненты RAG, влияющие на инфраструктуру**
-- Vector Store (хранилище эмбеддингов) — Pinecone / Vertex AI Vector Search / Elasticsearch.
-- Embeddings API — получение эмбеддингов для документов и пользовательских запросов.
-- Документное хранилище — Cloud Storage + метаданные в Firestore / Cloud SQL.
-- ETL-пайплайн — загрузка новых документов, их разбиение (chunking), расчёт эмбеддингов.
-- RAG pipeline: Пользовательский запрос → Embedding → Vector Search → Retrieve Top-K → Prompt Assembly → LLM ответ.
+Приложение - чат-бот с RAG (Retrieval-Augmented Generation), отвечающий пользователям на основе базы знаний компании.
 
 **1. Метрики**
 
@@ -45,52 +39,12 @@ Date of finished: 01.12.2025
 - Pilot: ~1M embeddings
 - Prod: ~10M embeddings
   
-**2. Компоненты архитектуры RAG (Google Cloud)**
 
-**Компоненты RAG, влияющие на инфраструктуру**
-- Vector Store (хранилище эмбеддингов) — Pinecone / Vertex AI Vector Search / Elasticsearch.
-- Embeddings API — получение эмбеддингов для документов и пользовательских запросов.
-- Документное хранилище — Cloud Storage + метаданные в Firestore / Cloud SQL.
-- ETL-пайплайн — загрузка новых документов, их разбиение (chunking), расчёт эмбеддингов.
-- RAG pipeline: Пользовательский запрос → Embedding → Vector Search → Retrieve Top-K → Prompt Assembly → LLM ответ.
-   
-**Схема компонентов RAG в GCP**
+**2. Модели**
 
-- Cloud CDN - отдача фронта
-- Cloud Load Balancer — распределение запросов
-- Cloud Run / GKE Autopilot — backend чат-бота
-- Identity Platform — авторизация
+**2.1 Начальная (MVP)**
 
-**RAG-слой**
 
-- Vertex AI Vector Search — векторный поиск
-- Vertex AI Embeddings API — генерация эмбеддингов
-- Vertex AI Generative AI / Gemini API — генерация ответа (LLM)
-- Cloud Storage — хранение корпоративных документов
-- Firestore / Cloud SQL — метаданные документов, версии, статусы
-- Cloud Functions / Cloud Run jobs — ETL пайплайн: загрузка → разбиение → эмбеддинги → индексация
-
-**Кеширование и ускорение**
-- Memorystore (Redis) — кеш ответов / кеш retrieved context
-
-**Мониторинг**
-- Cloud Monitoring + Cloud Logging
-
-**3. Архитектурные решения по стадиям и обоснование**
-
-3.1 Начальная (MVP)
-
-Цель: минимум усилий, минимальные затраты, быстрый запуск.
-
-Серверless / контейнеры с минимальным развёртыванием (Lambda или ECS Fargate / small EC2)
-
-Использовать внешние LLM-API (OpenAI/Google) чтобы избежать капитальных затрат на GPU
-
-S3 для хранения файлов
-
-Managed NoSQL/Serverless DB (DynamoDB / Firebase) для упрощения эксплуатации
-
-CDN необязательно, но можно подключить при наличии статики
 
 **MVP диаграмма**
 
